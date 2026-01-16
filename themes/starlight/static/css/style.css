@@ -809,19 +809,41 @@ blockquote {
     opacity: 0;
     pointer-events: none;
     z-index: 100;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
     line-height: 1.6;
     white-space: nowrap;
-    transition: opacity 2s ease-out;
+    text-shadow:
+        0 0 10px rgba(0, 0, 0, 0.9),
+        0 0 20px rgba(180, 200, 255, 0);
+    filter: blur(0px);
+    transform: translateY(0) scale(1);
+    transition:
+        opacity 1.5s ease-out,
+        text-shadow 1.5s ease-out,
+        filter 1.5s ease-out,
+        transform 1.5s ease-out;
 }
 
 .john-message.visible {
     opacity: 1;
+    text-shadow:
+        0 0 10px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(180, 200, 255, 0.3),
+        0 0 60px rgba(180, 200, 255, 0.1);
 }
 
 .john-message.fading {
     opacity: 0;
-    transition: opacity 3s ease-out;
+    text-shadow:
+        0 0 10px rgba(0, 0, 0, 0),
+        0 0 40px rgba(180, 200, 255, 0.5),
+        0 0 80px rgba(180, 200, 255, 0.2);
+    filter: blur(2px);
+    transform: translateY(-8px) scale(1.02);
+    transition:
+        opacity 4s ease-out,
+        text-shadow 4s ease-out,
+        filter 4s ease-out,
+        transform 4s ease-out;
 }
 
 /* --------------------------------------------------------------------------
