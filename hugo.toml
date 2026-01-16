@@ -1,0 +1,35 @@
+baseURL = 'https://chrishadad.com/'
+languageCode = 'en-us'
+title = 'Chris Hadad'
+theme = 'starlight'
+
+[params]
+  author = "Chris Hadad"
+  description = "Author of literary science fiction exploring consciousness, uncertain minds, and the connections we build across the space between us."
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    name = "Work"
+    url = "/work/"
+    weight = 3
+  [[menu.main]]
+    name = "Essays"
+    url = "/essays/"
+    weight = 4
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 5
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

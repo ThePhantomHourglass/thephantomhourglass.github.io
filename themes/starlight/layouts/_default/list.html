@@ -1,0 +1,37 @@
+{{ define "main" }}
+<section class="list-page">
+    <header class="page-header">
+        <h1>{{ .Title }}</h1>
+        {{ with .Description }}
+        <p class="page-description">{{ . }}</p>
+        {{ end }}
+    </header>
+
+    {{ if .Content }}
+    <div class="page-intro">
+        {{ .Content }}
+    </div>
+    {{ end }}
+
+    {{ $pages := .Pages }}
+    {{ if $pages }}
+    <ul class="content-list">
+        {{ range $pages }}
+        <li class="content-item">
+            <a href="{{ .Permalink }}">
+                <h2>{{ .Title }}</h2>
+                {{ with .Params.subtitle }}
+                <p class="item-subtitle">{{ . }}</p>
+                {{ end }}
+                {{ with .Summary }}
+                <p class="item-summary">{{ . }}</p>
+                {{ end }}
+            </a>
+        </li>
+        {{ end }}
+    </ul>
+    {{ else }}
+    <p class="empty-message">{{ .Params.emptyMessage | default "Nothing here yet. Check back soon." }}</p>
+    {{ end }}
+</section>
+{{ end }}

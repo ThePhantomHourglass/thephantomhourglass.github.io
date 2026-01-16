@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    {{- partial "head.html" . -}}
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="wandering-star" id="john" title=""></div>
+    <div class="john-message" id="john-message">
+        Three million years of silence.<br>
+        You noticed.
+    </div>
+    <div class="site-wrapper">
+        {{- partial "header.html" . -}}
+        <main class="main-content">
+            {{- block "main" . }}{{- end }}
+        </main>
+        {{- partial "footer.html" . -}}
+    </div>
+    <script src="/js/main.js"></script>
+</body>
+</html>

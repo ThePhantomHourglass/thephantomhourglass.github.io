@@ -1,0 +1,12 @@
+# Theme metadata
+name = "Starlight"
+license = "MIT"
+licenselink = ""
+description = "A dark theme with points of light"
+homepage = ""
+tags = ["dark", "minimal", "responsive"]
+features = ["dark mode", "responsive"]
+min_version = "0.100.0"
+
+[author]
+  name = "Chris Hadad"
