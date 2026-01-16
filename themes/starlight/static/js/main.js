@@ -13,6 +13,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const john = document.getElementById('john');
     const message = document.getElementById('john-message');
 
+    // Track star movement direction for tail orientation
+    if (john) {
+        let lastX = john.getBoundingClientRect().left;
+
+        setInterval(function() {
+            const currentX = john.getBoundingClientRect().left;
+            const delta = currentX - lastX;
+
+            // Only update class if there's meaningful movement
+            if (Math.abs(delta) > 0.5) {
+                if (delta > 0) {
+                    john.classList.add('moving-right');
+                } else {
+                    john.classList.remove('moving-right');
+                }
+            }
+
+            lastX = currentX;
+        }, 100);
+    }
+
     // Messages from the wanderer — lines from Divergence
     const messages = [
         // Chapter 13

@@ -10,6 +10,12 @@ I read everything and will do my best to respond.
 
 ---
 
+### Stay Updated
+
+<div class="newsletter-signup"><p class="newsletter-description">Occasional updates on new work and publications. No spam, unsubscribe anytime.</p><form action="https://buttondown.com/api/emails/embed-subscribe/chadad" method="post" target="popupwindow" class="newsletter-form"><input type="email" name="email" id="bd-email" placeholder="your@email.com" required><button type="submit">Subscribe</button></form></div>
+
+---
+
 ### Elsewhere
 
 <div class="social-links">

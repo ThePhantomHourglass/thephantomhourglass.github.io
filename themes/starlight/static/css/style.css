@@ -407,6 +407,38 @@ blockquote {
     100% { background-position: 0% 50%; }
 }
 
+.hero-tagline {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-lg);
+    background: linear-gradient(
+        90deg,
+        #a78bfa 0%,
+        #818cf8 15%,
+        #6366f1 30%,
+        #8b5cf6 45%,
+        #a855f7 60%,
+        #7c3aed 75%,
+        #6366f1 90%,
+        #a78bfa 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: nebula-drift 8s ease-in-out infinite;
+    text-shadow: 0 0 80px rgba(139, 92, 246, 0.3);
+}
+
+@keyframes nebula-drift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .hero-intro {
     font-size: 1.15rem;
     line-height: 1.8;
@@ -554,6 +586,10 @@ blockquote {
         font-size: 2.5rem;
     }
 
+    .hero-tagline {
+        font-size: 1.2rem;
+    }
+
     .menu-toggle {
         display: flex;
     }
@@ -591,6 +627,10 @@ blockquote {
 @media (max-width: 480px) {
     .hero-title {
         font-size: 2rem;
+    }
+
+    .hero-tagline {
+        font-size: 1.05rem;
     }
 
     .hero-intro {
@@ -699,6 +739,82 @@ blockquote {
 }
 
 /* --------------------------------------------------------------------------
+   Newsletter Signup
+   -------------------------------------------------------------------------- */
+.newsletter-signup {
+    margin: var(--space-md) 0;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
+
+.newsletter-description {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+    line-height: 1.5;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    min-width: 0;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newsletter-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px var(--color-accent-glow);
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: var(--color-text-muted);
+}
+
+.newsletter-form button {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--color-accent);
+    border-radius: 4px;
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    box-shadow: 0 0 20px var(--color-accent-glow);
+}
+
+@media (max-width: 480px) {
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form button {
+        width: 100%;
+    }
+}
+
+/* --------------------------------------------------------------------------
    The Wandering Star (Easter Egg)
    -------------------------------------------------------------------------- */
 .wandering-star {
@@ -730,15 +846,24 @@ blockquote {
     border-radius: 50%;
 }
 
-/* Comet tail */
+/* Comet tail - trails behind the star */
 .wandering-star::after {
     content: '';
     position: absolute;
     top: 50%;
-    left: 100%;
     transform: translateY(-50%);
     width: 40px;
     height: 3px;
+    border-radius: 2px;
+    opacity: 0.5;
+    filter: blur(1px);
+    transition: opacity 0.2s ease;
+}
+
+/* Moving left = tail on right, fading rightward */
+.wandering-star:not(.moving-right)::after {
+    left: 100%;
+    right: auto;
     background: linear-gradient(
         to right,
         var(--color-accent) 0%,
@@ -746,9 +871,19 @@ blockquote {
         rgba(212, 165, 116, 0.1) 70%,
         transparent 100%
     );
-    border-radius: 2px;
-    opacity: 0.5;
-    filter: blur(1px);
+}
+
+/* Moving right = tail on left, fading leftward */
+.wandering-star.moving-right::after {
+    left: auto;
+    right: 100%;
+    background: linear-gradient(
+        to left,
+        var(--color-accent) 0%,
+        rgba(212, 165, 116, 0.4) 30%,
+        rgba(212, 165, 116, 0.1) 70%,
+        transparent 100%
+    );
 }
 
 .wandering-star:hover {
@@ -852,17 +987,43 @@ blockquote {
 .author-photo-container {
     text-align: center;
     margin-bottom: var(--space-lg);
+    position: relative;
 }
 
 .author-photo {
-    max-width: 280px;
+    max-width: 380px;
     width: 100%;
-    border-radius: 4px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    /* Soft fade at edges to blend with cosmic background */
+    mask-image: radial-gradient(
+        ellipse 80% 85% at center,
+        black 40%,
+        rgba(0, 0, 0, 0.6) 60%,
+        rgba(0, 0, 0, 0.2) 80%,
+        transparent 95%
+    );
+    -webkit-mask-image: radial-gradient(
+        ellipse 80% 85% at center,
+        black 40%,
+        rgba(0, 0, 0, 0.6) 60%,
+        rgba(0, 0, 0, 0.2) 80%,
+        transparent 95%
+    );
+    /* Subtle cosmic glow */
+    box-shadow:
+        0 0 50px rgba(88, 28, 135, 0.25),
+        0 0 100px rgba(30, 58, 138, 0.18),
+        0 0 150px rgba(88, 28, 135, 0.1);
+}
+
+@media (max-width: 768px) {
+    .author-photo {
+        max-width: 320px;
+    }
 }
 
 @media (max-width: 480px) {
     .author-photo {
-        max-width: 220px;
+        max-width: 260px;
     }
 }
