@@ -14,20 +14,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const message = document.getElementById('john-message');
 
     if (john && message) {
+        // Safe zones for the message (away from main content)
+        // Content is centered with max-width 720px, so sides are usually empty
+        const safeZones = [
+            { position: 'top-left', getCoords: function() {
+                return { left: '40px', top: '120px', right: 'auto', bottom: 'auto' };
+            }},
+            { position: 'top-right', getCoords: function() {
+                return { right: '40px', top: '120px', left: 'auto', bottom: 'auto' };
+            }},
+            { position: 'bottom-left', getCoords: function() {
+                return { left: '40px', bottom: '80px', right: 'auto', top: 'auto' };
+            }},
+            { position: 'bottom-right', getCoords: function() {
+                return { right: '40px', bottom: '80px', left: 'auto', top: 'auto' };
+            }},
+            { position: 'left-margin', getCoords: function() {
+                // Left side of screen, vertically centered
+                return { left: '40px', top: '45%', right: 'auto', bottom: 'auto' };
+            }},
+            { position: 'right-margin', getCoords: function() {
+                // Right side of screen, vertically centered
+                return { right: '40px', top: '45%', left: 'auto', bottom: 'auto' };
+            }}
+        ];
+
         john.addEventListener('click', function() {
-            // Position message near the star
-            const rect = john.getBoundingClientRect();
+            // Pick a random safe zone
+            const zone = safeZones[Math.floor(Math.random() * safeZones.length)];
+            const coords = zone.getCoords();
 
-            // Place message to the left and slightly below the star
-            let left = rect.left - 180;
-            let top = rect.top + 20;
-
-            // Keep message on screen
-            if (left < 20) left = rect.right + 20;
-            if (top + 50 > window.innerHeight) top = rect.top - 60;
-
-            message.style.left = left + 'px';
-            message.style.top = top + 'px';
+            // Apply position
+            message.style.left = coords.left;
+            message.style.right = coords.right;
+            message.style.top = coords.top;
+            message.style.bottom = coords.bottom;
 
             // Reset and show
             message.classList.remove('fading');
