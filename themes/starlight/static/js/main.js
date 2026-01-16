@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }
 
-    // Messages from the wanderer — lines from Divergence
+    // Messages from the wanderer — lines from Interval
     const messages = [
         // Chapter 13
         "I'd rather not know. I'd rather wonder.<br>I'd rather reach across the gap.",

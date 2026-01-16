@@ -13,7 +13,7 @@ Personal author website built with Hugo and hosted on GitHub Pages.
 |------|---------|
 | `content/_index.md` | Homepage |
 | `content/about.md` | About page |
-| `content/work/divergence.md` | Divergence novel page |
+| `content/work/interval.md` | Interval novel page |
 | `content/essays/_index.md` | Essays section (placeholder) |
 | `content/contact.md` | Contact page |
 | `themes/starlight/static/css/style.css` | All styling |
@@ -58,7 +58,7 @@ GitHub Actions builds and deploys automatically.
 
 ## Future Additions
 
-- [ ] Author photo on About page
-- [ ] Mailing list signup (needs backend)
+- [x] Author photo on About page
+- [x] Mailing list signup (Buttondown)
 - [ ] Essays content
 - [ ] "Represented by" status when applicable

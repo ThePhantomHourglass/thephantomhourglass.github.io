@@ -1,5 +1,5 @@
 ---
-title: "Divergence"
+title: "Interval"
 subtitle: "A novel in progress"
 ---
 
@@ -13,6 +13,6 @@ What they discover is an offer: connection so complete that separation becomes i
 
 The crew must decide what they're willing to lose, and what to destroy, to preserve something uncertain, something painful. The gap between one mind and another.
 
-*A novel about love across the gaps that separate us.*
+*A novel about love across the distance that separates us.*
 
 **Status:** In revision (~140,000 words)

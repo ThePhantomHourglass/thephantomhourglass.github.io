@@ -12,4 +12,4 @@ Before Congress, I studied psychology at Haverford College, where I also played 
 
 At fourteen, I was awarded a U.S. patent for an ergonomic laptop stand. It's since been cited by major global technology companies.
 
-Divergence is my first novel. It follows a crew that boards humanity's first intergalactic mission and wakes three million years in the future to find the universe silent.
+Interval is my first novel. It follows a crew that boards humanity's first intergalactic mission and wakes three million years in the future to find the universe silent.
