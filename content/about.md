@@ -8,4 +8,4 @@ Before Congress, he studied psychology at Haverford College, where he also playe
 
 At fourteen, he was awarded a U.S. patent for an ergonomic laptop stand. It has since been cited by major global technology companies.
 
-Divergence is his first novel. It follows a crew that boards humanity's first interstellar mission and wakes three million years in the future to find the universe silent.
+Divergence is his first novel. It follows a crew that boards humanity's first intergalactic mission and wakes three million years in the future to find the universe silent.

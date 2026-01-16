@@ -3,7 +3,7 @@ title: "Divergence"
 subtitle: "A novel in progress"
 ---
 
-Allegra Abernathy boards humanity's first interstellar mission knowing she will never see her wife or her sixteen-year-old son again. She goes anyway.
+Allegra Abernathy boards humanity's first intergalactic mission knowing she will never see her wife or her sixteen-year-old son again. She goes anyway.
 
 When the crew wakes, three million years have passed. Earth is silent. Something has spread through realities beyond counting—patient, vast, older than stars. It offered an end to loneliness. Across universes without number, minds said yes.
 
