@@ -686,3 +686,24 @@ blockquote {
     opacity: 0;
     transition: opacity 3s ease-out;
 }
+
+/* --------------------------------------------------------------------------
+   Author Photo
+   -------------------------------------------------------------------------- */
+.author-photo-container {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.author-photo {
+    max-width: 280px;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 480px) {
+    .author-photo {
+        max-width: 220px;
+    }
+}
