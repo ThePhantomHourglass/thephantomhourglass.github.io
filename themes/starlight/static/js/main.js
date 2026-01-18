@@ -1,5 +1,6 @@
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
+
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
 
@@ -144,4 +145,84 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 7000);
         });
     }
+
+    // Citrus Easter Egg (Ctrl+O)
+    const citrusFruits = [
+        { url: 'https://e7.pngegg.com/pngimages/357/717/png-clipart-citrus-fruit-tangerine-clementine-orange-fruit-orange-fruit-natural-foods-food.png', name: 'Orange' },
+        { url: 'https://e7.pngegg.com/pngimages/300/533/png-clipart-lemon-fruit-single-lemon-food-fruits.png', name: 'Lemon' },
+        { url: 'https://e7.pngegg.com/pngimages/953/670/png-clipart-lime-fruit-persian-lime-lemon-lime-drink-key-lime-green-lime-natural-foods-food.png', name: 'Lime' },
+        { url: 'https://e7.pngegg.com/pngimages/453/811/png-clipart-grapefruit-banpeiyu-grapefruit-section-food-citrus.png', name: 'Grapefruit' },
+        { url: 'https://e7.pngegg.com/pngimages/81/886/png-clipart-cantaloupe-watermelon-dried-fruit-kumquat-food-orange.png', name: 'Kumquat' },
+        { url: 'https://e1.pngegg.com/pngimages/291/4/png-clipart-sliced-orange.png', name: 'Orange Slice' },
+        { url: 'https://e7.pngegg.com/pngimages/364/914/png-clipart-mandarin-orange-tangerine-orange-natural-foods-food.png', name: 'Tangerine' },
+        { url: 'https://e7.pngegg.com/pngimages/565/197/png-clipart-orange-slices-grapefruit-blood-orange-mandarin-orange-lemon-orangelo-grapefruit-lemon-orange-slice-food-orange.png', name: 'Blood Orange' },
+        { url: 'https://e7.pngegg.com/pngimages/767/121/png-clipart-clementine-mandarin-orange-tangerine-rangpur-tangelo-jeju-island-natural-foods-food.png', name: 'Clementines' },
+        { url: 'https://e7.pngegg.com/pngimages/747/908/png-clipart-round-green-lime-fruit-illustration-meyer-lemon-mojito-juice-lime-lime-natural-foods-food.png', name: 'Key Lime' }
+    ];
+
+    // Create citrus container
+    const citrusContainer = document.createElement('div');
+    citrusContainer.className = 'citrus-container';
+    document.body.appendChild(citrusContainer);
+
+    // Create citrus image element
+    const citrusImg = document.createElement('img');
+    citrusImg.className = 'citrus-fruit';
+    citrusImg.alt = 'A mysterious citrus fruit';
+    citrusContainer.appendChild(citrusImg);
+
+    // Shuffle array (Fisher-Yates)
+    let shuffledCitrus = [...citrusFruits];
+    let citrusIndex = 0;
+
+    function shuffleCitrus(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    shuffledCitrus = shuffleCitrus(shuffledCitrus);
+
+    let citrusAnimating = false;
+
+    document.addEventListener('keydown', function(e) {
+        // Check for Ctrl+O (Mac uses ctrlKey for Control)
+        if (e.ctrlKey && e.key === 'o') {
+            e.preventDefault(); // Prevent browser's "Open File" dialog
+
+            if (citrusAnimating) return;
+            citrusAnimating = true;
+
+            // Get next citrus from shuffled array
+            const currentCitrus = shuffledCitrus[citrusIndex];
+            citrusImg.src = currentCitrus.url;
+            citrusImg.alt = currentCitrus.name;
+
+            // Advance index, reshuffle when exhausted
+            citrusIndex++;
+            if (citrusIndex >= shuffledCitrus.length) {
+                citrusIndex = 0;
+                shuffledCitrus = shuffleCitrus([...citrusFruits]);
+            }
+
+            // Reset and show
+            citrusImg.classList.remove('fading');
+            void citrusImg.offsetWidth; // Force reflow
+            citrusImg.classList.add('visible');
+
+            // Start cosmic fade after viewing time
+            setTimeout(function() {
+                citrusImg.classList.add('fading');
+                citrusImg.classList.remove('visible');
+            }, 2000);
+
+            // Fully hide after fade completes
+            setTimeout(function() {
+                citrusImg.classList.remove('fading');
+                citrusAnimating = false;
+            }, 5000);
+        }
+    });
 });
